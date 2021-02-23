@@ -7,7 +7,7 @@
 # Instructions:
 # Source this file in the KappaNEURON/doc directory:
 # cd doc
-# . ubuntu-20-04.txt
+# . install-ubuntu-20-04.sh
 
 conda deactivate
 conda env remove --name KappaNEURON
