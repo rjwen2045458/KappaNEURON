@@ -7,8 +7,10 @@ import neuron.rxd.rxd as nrr
 import neuron.rxd.species
 import neuron.rxd.rxdmath
 import neuron.rxd.node
+import neuron.rxd.constants as constants
 from neuron.rxd.species import Species
-from neuron.rxd.generalizedReaction import GeneralizedReaction, molecules_per_mM_um3
+from neuron.rxd.generalizedReaction import GeneralizedReaction
+
 from neuron.rxd.multiCompartmentReaction import MultiCompartmentReaction
 import weakref
 import random
@@ -23,6 +25,7 @@ import re
 import os, sys
 import warnings
 
+molecules_per_mM_um3 = constants.molecules_per_mM_um3()
 FARADAY = h.FARADAY
 verbose = False
 def report(mess):
