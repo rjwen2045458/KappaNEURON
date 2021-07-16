@@ -72,8 +72,11 @@ class ExternalSimulatorInterface():
             java_err = re.sub(r'java.lang.IllegalStateException: ', r'', str(e.java_exception))
             errstr = 'Error in kappa file %s: %s' % (self._kappa_file, java_err)
             raise RuntimeError(errstr)
+        print("initialing Spatialkappa")
+        self.kappa_sim.initialiseSim()
 
     def run_every_fixed_timestep(self, dt):
+        print("run every....")
         # do the calculation for the given advance
         # here is where an external simulator might be called
         result = h.sin(h.t)
@@ -81,6 +84,10 @@ class ExternalSimulatorInterface():
         # NOTE: if your external tool is working in molecule counts, be sure to
         # .      convert; can always ask a node for its .volume
         self._node.concentration = result
+
+        self.kappa_sim.runForTime(dt, False)
+        print(self.kappa_sim.getTime())
+
 
     def register(self):
         nbs.register(self._callbacks)
