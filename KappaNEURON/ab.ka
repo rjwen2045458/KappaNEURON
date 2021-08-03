@@ -1,25 +1,27 @@
-# Simple calcium pump
+# File ab.ka
+# A B reversible molecular binding reactions
 
-# Declaration of internal calcium; the name needs to be 'ca' to match
-# up with calcium in NEURON
+# Declaration of agent species
+# A and B
 %agent: A(x)
 %agent: B(x)
 
-# Rate constants in /ms, since this is a unimolecular reaction
-%var: 'k1' 0.0001
-%var: 'k2' 0.01
+# Declaration of reaction rate
+# Rate constants in /ms
+%var: 'k1' 0.001
+%var: 'k2' 0.001
 
-# Rules
+# Reactions rules
+# As a reversible molecular binding reaction
 'binding of A to B' A(x), B(x) -> A(x!1), B(x!1) @ 'k1'
 'unbinding of A and B' A(x!1), B(x!1) -> A(x), B(x) @ 'k2'
 
-# Initialise. This line will be overridden by NEURON, but is useful if
-# running as a stand-alone Kappa file
-%init: 100 A(x)
-%init: 50 B(x)
+# Initialisation
+%init: 150 A(x)
+%init: 100 B(x)
 
-# An observation. This line is not needed by NEURON but is useful if
-# running as a stand-alone Kappa file
+# Observation
+# Observe A B and AB
 %obs: 'A' A(x)
 %obs: 'B' B(x)
 %obs: 'AB' A(x!1), B(x!1)
