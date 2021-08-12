@@ -3,14 +3,14 @@ import matplotlib.pyplot as plt
 
 flog = open("/tmp/SpatialKappa-test.log", "w")
 sk = SpatialKappa.SpatialKappa(redirect_stdout=flog)
-sim = sk.kappa_sim("ms", True)
+sim = sk.kappa_sim("ms", True, 1)
 
 sim.loadFile("ab.ka")
 
-time_record = []
-A_record = []
-B_record = []
-AB_record = []
+time_record = [0]
+A_record = [150]
+B_record = [100]
+AB_record = [0]
 
 for i in range(1000):
     sim.runForTime(0.1, True)

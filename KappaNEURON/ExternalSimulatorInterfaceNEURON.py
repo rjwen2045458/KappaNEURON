@@ -72,7 +72,6 @@ class ExternalSimulatorInterface():
         for s in self._species:
             nodelist = s[self._region].nodes
             for n in nodelist:
-                print(s.name)
                 kappa_sim = self._name[n.segment]
                 n.concentration = kappa_sim.getObservation(s.name) #/ (n.volume * 6.022 * pow(10, 5))
 
